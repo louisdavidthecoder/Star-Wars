@@ -7,6 +7,9 @@ import "../../styles/demo.scss";
 export const characterDetails = props => {
 	const { store, actions } = useContext(Context);
 	const index = useParams().id;
+	let pattern = /\d+/g;
+	console.log(index);
+	const id = store.people[index].homeworld.match(pattern) && store.people[index].homeworld.match(pattern);
 
 	return (
 		<div className="container">
@@ -23,11 +26,8 @@ export const characterDetails = props => {
 							<p className="card-text">Height: {store.people && store.people[index].height}</p>
 							<p className="card-text">
 								Home World:{" "}
-								<Link to={"/planetdetails/" + store.people[index].homeworld}>
-									{store.people && store.people[index].homeworld}
-								</Link>
+								<Link to={"/planetdetails/" + id}>{store.people && store.people[index].homeworld}</Link>
 							</p>
-							\
 							<p className="card-text">
 								<small className="text-muted">Last updated 3 mins ago</small>
 							</p>
